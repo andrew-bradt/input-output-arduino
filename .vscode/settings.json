@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "*.ejs": "html",
+    "*.tidal": "haskell",
+    "*.hs": "haskell",
+    "stdio.h": "c"
+  }
+}
