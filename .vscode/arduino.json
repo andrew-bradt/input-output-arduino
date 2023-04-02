@@ -1,0 +1,5 @@
+{
+    "sketch": "uno/uno.ino",
+    "board": "arduino:avr:uno",
+    "port": "/dev/tty.usbserial-1140"
+}
