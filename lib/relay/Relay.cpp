@@ -6,10 +6,10 @@ Relay::Relay(int ctlPin) {
   pinMode(_ctlPin, INPUT);
 }
 
-void Relay::allow_current() {
+void Relay::allowCurrent() {
   digitalWrite(_ctlPin, HIGH);
 }
 
-void Relay::block_current() {
+void Relay::blockCurrent() {
   digitalWrite(_ctlPin, LOW);
 }
