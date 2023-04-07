@@ -1,12 +1,5 @@
 #include "Goose.h"
 
-struct GooseParams {
-  int nearCtlPin;
-  int farCtlPin;
-  void (*nearCallback) ();
-  void (*farCallback) ();
-};
-
 Goose::Goose(GooseParams params) : 
   _nearRelay(params.nearCtlPin), 
   _farRelay(params.farCtlPin), 

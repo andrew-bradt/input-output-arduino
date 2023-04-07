@@ -8,7 +8,8 @@
 #endif
 
 #include <inttypes.h>
-#include "../relay/Relay.h"
+#include "Relay.h"
+
 struct GooseParams {
   int nearCtlPin;
   int farCtlPin;
