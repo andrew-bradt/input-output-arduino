@@ -15,6 +15,7 @@ Goose goose = Goose({
 void setup() {
    Serial.begin(9600);
    Serial.println("Starting");
+   delay(5000);
 }
 
 void loop() {

@@ -5,6 +5,8 @@ Goose::Goose(GooseParams params) :
   _farRelay(params.farCtlPin), 
   _nearCallback(params.nearCallback), 
   _farCallback(params.farCallback) {
+
+  Goose::off();
 }
 
 void Goose::near() {
