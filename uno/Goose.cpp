@@ -1,27 +1,42 @@
 #include "Goose.h"
 
 Goose::Goose(GooseParams params) : 
-  _nearRelay(params.nearCtlPin), 
-  _farRelay(params.farCtlPin), 
-  _nearCallback(params.nearCallback), 
-  _farCallback(params.farCallback) {
-
-  Goose::off();
+  _enterNear(params.enterNear),
+  _enterFar(params.enterFar),
+  _exitNear(params.exitNear),
+  _exitFar(params.exitFar)
+{
+  setState(OFF);
 }
 
-void Goose::near() {
-  _nearRelay.allowCurrent();
-  _farRelay.blockCurrent();
-  _nearCallback();
+void Goose::setState(State state) {
+  if (_state == state) return;
+
+  _dispatchHandler(state);
+  _state = state;
 }
 
-void Goose::far() {
-  _nearRelay.blockCurrent();
-  _farRelay.allowCurrent();
-  _farCallback();
+void Goose::_dispatchHandler(State state) {
+  if (state == OFF) {
+    _handleOff();
+  } else if (state == FAR) {
+    _handleFar();
+  } else if (state == NEAR) {
+    _handleNear();
+  }
 }
 
-void Goose::off() {
-  _nearRelay.blockCurrent();
-  _farRelay.blockCurrent();
+void Goose::_handleNear() {
+  _enterNear();
+  _exitFar();
+}
+
+void Goose::_handleFar() {
+  _enterFar();
+  _exitNear();
+}
+
+void Goose::_handleOff() {
+  _exitNear();
+  _exitFar();
 }

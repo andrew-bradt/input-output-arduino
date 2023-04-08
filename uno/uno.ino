@@ -1,29 +1,41 @@
 #include "Consts.h"
 #include "Goose.h"
+#include "Relay.h"
 
-Goose goose = Goose({
-   .nearCtlPin = NEAR_CTL_PIN,
-   .farCtlPin = FAR_CTL_PIN, 
-   .nearCallback = [](){
+Relay nearRelay = Relay(NEAR_CTL_PIN);
+Relay farRelay = Relay(FAR_CTL_PIN);
+
+GooseParams gooseParams = {
+   .enterNear = [](){
+      nearRelay.close();
       Serial.println(SERIAL_MSG_NEAR);
    },
-   .farCallback = [](){
+   .enterFar = [](){
+      farRelay.close();
       Serial.println(SERIAL_MSG_FAR);
+   },
+   .exitNear = [](){
+      nearRelay.open();
+   },
+   .exitFar = [](){
+      farRelay.open();
    }
-});
+};
+
+Goose goose = Goose(gooseParams);
 
 void setup() {
    Serial.begin(9600);
-   Serial.println("Starting");
+   Serial.println("Starting, both off");
    delay(5000);
 }
 
 void loop() {
    Serial.println("near (on), far(off)");
-   goose.near();
+   goose.setState(NEAR);
    delay(1000);
 
    Serial.println("far (on), near(off)");
-   goose.far();
+   goose.setState(FAR);
    delay(1000);
 }

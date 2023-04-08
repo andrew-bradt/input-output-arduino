@@ -8,27 +8,34 @@
 #endif
 
 #include <inttypes.h>
-#include "Relay.h"
 
+enum State {
+  OFF = 0,
+  FAR = 1,
+  NEAR = 2,
+};
 struct GooseParams {
-  int nearCtlPin;
-  int farCtlPin;
-  void (*nearCallback) ();
-  void (*farCallback) ();
+  void (*enterNear) ();
+  void (*enterFar) ();
+  void (*exitNear) ();
+  void (*exitFar) ();
 };
 
 class Goose {
   
 public:
   Goose(GooseParams params);
-  void near();
-  void far();
-  void off();
+  void setState(State state);
 
 private:
-  Relay _nearRelay;
-  Relay _farRelay;
-  void (*_nearCallback) ();
-  void (*_farCallback) ();
+  State _state;
+  void (*_enterNear) ();
+  void (*_enterFar) ();
+  void (*_exitNear) ();
+  void (*_exitFar) ();
+  void _dispatchHandler(State state);
+  void _handleNear();
+  void _handleFar();
+  void _handleOff();
 };
 #endif

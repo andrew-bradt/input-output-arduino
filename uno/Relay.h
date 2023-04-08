@@ -12,8 +12,8 @@ class Relay {
 
 public:
 	Relay(int ctlPin);
-  void allowCurrent();
-  void blockCurrent();
+  void close();
+  void open();
 
 private:
   int _ctlPin;
