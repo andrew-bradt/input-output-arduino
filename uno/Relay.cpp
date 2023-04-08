@@ -3,7 +3,7 @@
 Relay::Relay(int ctlPin) {
   _ctlPin = ctlPin;
 
-  pinMode(_ctlPin, INPUT);
+  pinMode(_ctlPin, OUTPUT);
 }
 
 void Relay::close() {

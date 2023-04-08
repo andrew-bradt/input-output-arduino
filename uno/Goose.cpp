@@ -1,13 +1,12 @@
 #include "Goose.h"
 
 Goose::Goose(GooseParams params) : 
+  _state(OFF),
   _enterNear(params.enterNear),
   _enterFar(params.enterFar),
   _exitNear(params.exitNear),
   _exitFar(params.exitFar)
-{
-  setState(OFF);
-}
+{}
 
 void Goose::setState(State state) {
   if (_state == state) return;
