@@ -25,9 +25,9 @@ GooseParams gooseParams = {
 Goose goose = Goose(gooseParams);
 
 void setup() {
+   delay(5000);
    Serial.begin(9600);
    Serial.println("Starting, both off");
-   delay(5000);
 }
 
 void loop() {
