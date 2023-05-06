@@ -5,10 +5,8 @@
 const int NEAR_CTL_PIN =  2;
 const int FAR_CTL_PIN =  3;
 
-// Sensor Pins
-const int ECHO_PIN =  4;
-const int TRIGGER_PIN =  5;
-
+const int SENSOR_PIN_IN =  5;
+const int SENSOR_PIN_OUT =  4;
 
 const int SERIAL_MSG_NEAR =  0;
 const int SERIAL_MSG_FAR =  1;

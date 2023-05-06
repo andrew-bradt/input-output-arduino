@@ -24,7 +24,7 @@ Goose goose = Goose({
 });
 
 DistanceMonitor distanceMonitor = DistanceMonitor({
-   .sensorSettings = {ECHO_PIN, TRIGGER_PIN},
+   .sensorSettings = {SENSOR_PIN_IN, SENSOR_PIN_OUT},
    .intervalSettings = {PING_DELAY_MS, PING_COUNT},
    .nearSettings = {
       {NEAR_MIN_CM, NEAR_MAX_CM},
