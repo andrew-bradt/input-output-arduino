@@ -1,20 +1,24 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-#define NEAR_CTL_PIN 2
-#define FAR_CTL_PIN 3
-#define ECHO_PIN 4
-#define TRIGGER_PIN 5
+// Relay Pins
+const int NEAR_CTL_PIN =  2;
+const int FAR_CTL_PIN =  3;
 
-#define SERIAL_MSG_NEAR 0
-#define SERIAL_MSG_FAR 1
+// Sensor Pins
+const int ECHO_PIN =  4;
+const int TRIGGER_PIN =  5;
 
-#define PING_DELAY_MS 10
-#define PING_COUNT 30
 
-#define NEAR_MIN_CM 10
-#define NEAR_MAX_CM 30
-#define FAR_MIN_CM 40
-#define FAR_MAX_CM 100
+const int SERIAL_MSG_NEAR =  0;
+const int SERIAL_MSG_FAR =  1;
+
+const int PING_DELAY_MS =  10;
+const int PING_COUNT =  30;
+
+const int NEAR_MIN_CM =  10;
+const int NEAR_MAX_CM =  30;
+const int FAR_MIN_CM =  40;
+const int FAR_MAX_CM =  100;
 
 #endif

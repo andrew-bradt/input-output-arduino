@@ -1,10 +1,8 @@
 #include "Consts.h"
 #include "Goose.h"
 #include "Relay.h"
-#include "SR04.h"
 #include "DistanceMonitor.h"
 
-SR04 sr04 = SR04(ECHO_PIN, TRIGGER_PIN);
 Relay nearRelay = Relay(NEAR_CTL_PIN);
 Relay farRelay = Relay(FAR_CTL_PIN);
 
@@ -26,7 +24,7 @@ Goose goose = Goose({
 });
 
 DistanceMonitor distanceMonitor = DistanceMonitor({
-   .sensor = sr04,
+   .sensorSettings = {ECHO_PIN, TRIGGER_PIN},
    .intervalSettings = {PING_DELAY_MS, PING_COUNT},
    .nearSettings = {
       {NEAR_MIN_CM, NEAR_MAX_CM},

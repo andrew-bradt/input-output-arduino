@@ -1,15 +1,14 @@
 #include "DistanceMonitor.h"
 
 DistanceMonitor::DistanceMonitor(DistanceMonitorParams params) :
-  _sensor(params.sensor),
+  _sensor(params.sensorSettings.inPin, params.sensorSettings.outPin),
   _intervalSettings(params.intervalSettings),
   _nearRange(params.nearSettings.range),
   _farRange(params.farSettings.range),
   _nearHandler(params.nearSettings.withinRangeHandler),
-  _farHandler(params.farSettings.withinRangeHandler)
-{
-  _distance = params.farSettings.range.min;
-}
+  _farHandler(params.farSettings.withinRangeHandler),
+  _distance(params.farSettings.range.min)
+{}
 
 void DistanceMonitor::handleDistance() {
   _getDistance();
@@ -21,7 +20,7 @@ void DistanceMonitor::handleDistance() {
 }
 
 void DistanceMonitor::_getDistance() {
-  _distance = _sensor.Distance();
+  _distance = _sensor.getDistance();
 }
 
 bool DistanceMonitor::_isFar() {

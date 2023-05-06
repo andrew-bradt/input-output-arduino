@@ -8,7 +8,7 @@
 #endif
 
 #include <inttypes.h>
-#include <SR04.h>
+#include "DistanceSensor.h"
 
 struct Range {
 	int min;
@@ -25,8 +25,13 @@ struct DistanceSetting {
 	void (*withinRangeHandler) ();
 };
 
+struct SensorSettings {
+	int inPin;
+	int outPin;
+};
+
 struct DistanceMonitorParams {
-	SR04 sensor;
+	SensorSettings sensorSettings;
 	IntervalSettings intervalSettings;
 	DistanceSetting nearSettings;
 	DistanceSetting farSettings;
@@ -38,7 +43,7 @@ class DistanceMonitor {
 		void handleDistance();
 
 	private:
-		SR04 _sensor;
+		DistanceSensor _sensor;
 		IntervalSettings _intervalSettings;
 		Range _nearRange;
 		Range _farRange;
