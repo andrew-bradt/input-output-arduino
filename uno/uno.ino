@@ -6,23 +6,15 @@
 
 SR04 sr04 = SR04(ECHO_PIN, TRIGGER_PIN);
 Relay nearRelay = Relay(NEAR_CTL_PIN);
-Relay farRelay = Relay(FAR_CTL_PIN);
 
 Goose goose = Goose({
    .enterNear = [](){
       nearRelay.close();
       Serial.println(SERIAL_MSG_NEAR);
    },
-   .enterFar = [](){
-      farRelay.close();
-      Serial.println(SERIAL_MSG_FAR);
-   },
-   .exitNear = [](){
-      nearRelay.open();
-   },
-   .exitFar = [](){
-      farRelay.open();
-   }
+   .enterFar = [](){ Serial.println(SERIAL_MSG_FAR); },
+   .exitNear = [](){ nearRelay.open(); },
+   .exitFar = [](){}
 });
 
 DistanceMonitor distanceMonitor = DistanceMonitor({
